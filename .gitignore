@@ -1,0 +1,35 @@
+# Dependencies
+node_modules/
+.npm/
+
+# Environment
+.env
+.env.local
+.env.*.local
+
+# Build
+dist/
+build/
+coverage/
+backend/coverage/
+
+# Expo
+.expo/
+frontend-mobile/.expo/
+
+# Logs
+*.log
+npm-debug.log*
+
+# Editor
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Expo
+.expo/

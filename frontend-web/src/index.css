@@ -1,0 +1,90 @@
+/* NutriRPG Web — Global reset & 8-bit pixel theme */
+
+/* ── Colour palette (single source of truth) ───────────────────────────────── */
+:root {
+  --c-bg:      #ffffff;
+  --c-card:    #f3f4f6;
+  --c-input:   #e5e7eb;
+  --c-alt:     #e9eaec;
+  --c-text:    #111111;
+  --c-white:   #ffffff;
+  --c-muted:   #6b7280;
+  --c-border:  #000000;
+  --c-red:     #e94560;
+  --c-gold:    #d97706;
+  --c-blue:    #0284c7;
+  --c-purple:  #7c3aed;
+  --c-green:   #16a34a;
+  --c-cyan:    #0891b2;
+}
+
+@font-face {
+  font-family: 'ByteBounce';
+  src: url('./assets/fonts/ByteBounce.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'VT323';
+  src: url('./assets/fonts/VT323-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body, #root {
+  min-height: 100vh;
+  background-color: #ffffff;
+  font-family: 'VT323', 'Courier New', Courier, monospace;
+  color: #111111;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Pixel-style scrollbar */
+::-webkit-scrollbar       { width: 8px; height: 8px; }
+::-webkit-scrollbar-track { background: #f3f4f6; }
+::-webkit-scrollbar-thumb { background: #000000; border: 2px solid #f3f4f6; }
+
+/* Remove default focus ring, add pixel one */
+*:focus-visible {
+  outline: 2px solid #e94560;
+  outline-offset: 1px;
+}
+
+/* Remove all border-radius for pixel look */
+input, button, select, textarea {
+  font-family: inherit;
+  border-radius: 0 !important;
+}
+
+a {
+  color: #0284c7;
+  text-decoration: none;
+}
+
+/* Pixel press effect (add class="px-btn" to buttons) */
+.px-btn {
+  box-shadow: 4px 4px 0px #000000;
+  transition: box-shadow 0.05s, transform 0.05s;
+}
+.px-btn:active {
+  box-shadow: 2px 2px 0px #000000;
+  transform: translate(2px, 2px);
+}
+
+/* Placeholder color */
+::placeholder {
+  color: #c4c9d4;
+  opacity: 1;
+}
+
+/* Selection */
+::selection {
+  background: #e94560;
+  color: #ffffff;
+}

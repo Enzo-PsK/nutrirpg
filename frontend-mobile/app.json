@@ -1,0 +1,26 @@
+{
+  "expo": {
+    "name": "NutriRPG",
+    "slug": "nutrirpg",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "userInterfaceStyle": "dark",
+    "splash": {
+      "backgroundColor": "#1a1a2e"
+    },
+    "android": {
+      "package": "com.nutrirpg.app"
+    },
+    "ios": {
+      "bundleIdentifier": "com.nutrirpg.app",
+      "supportsTablet": false
+    },
+    "extra": {
+      "apiUrl": "http://192.168.1.85:3000"
+    },
+    "plugins": [
+      "expo-font",
+      "expo-secure-store"
+    ]
+  }
+}

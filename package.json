@@ -1,0 +1,27 @@
+{
+  "name": "nutrirpg",
+  "version": "1.0.0",
+  "description": "> **Gamificação da Nutrição e Gestão de Hábitos Alimentares**",
+  "main": "index.js",
+  "scripts": {
+    "dev": "concurrently --names \"BACKEND,WEB,MOBILE\" --prefix-colors \"cyan,magenta,yellow\" \"npm run dev:backend\" \"npm run dev:web\" \"npm run dev:mobile\"",
+    "dev:backend": "cd backend && npm run dev",
+    "dev:web":     "cd frontend-web && npm start",
+    "dev:mobile":  "cd frontend-mobile && npx expo start"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Enzo-PsK/nutrirpg.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/Enzo-PsK/nutrirpg/issues"
+  },
+  "homepage": "https://github.com/Enzo-PsK/nutrirpg#readme",
+  "devDependencies": {
+    "concurrently": "^10.0.3"
+  }
+}

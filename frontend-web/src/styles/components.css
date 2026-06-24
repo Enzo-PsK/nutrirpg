@@ -1,0 +1,300 @@
+/* NutriRPG — Reusable component classes
+ * Import this wherever you need common UI patterns.
+ * All colours come from CSS variables defined in index.css.
+ */
+
+/* ── Layout ─────────────────────────────────────────────────────────────────── */
+
+.page-center {
+  min-height: 100vh;
+  background-color: var(--c-bg);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 24px;
+}
+
+/* ── Cards ───────────────────────────────────────────────────────────────────── */
+
+.px-card {
+  background-color: var(--c-card);
+  border: 2px solid var(--c-border);
+  box-shadow: 6px 6px 0 #000;
+  padding: 20px;
+}
+
+.px-card--sm { padding: 16px; }
+.px-card--lg { padding: 36px 40px; }
+
+.px-card--red    { border-left: 4px solid var(--c-red);    }
+.px-card--blue   { border-left: 4px solid var(--c-blue);   }
+.px-card--green  { border-left: 4px solid var(--c-green);  }
+.px-card--gold   { border-left: 4px solid var(--c-gold);   }
+.px-card--purple { border-left: 4px solid var(--c-purple); }
+
+/* ── Forms ───────────────────────────────────────────────────────────────────── */
+
+.px-label {
+  display: block;
+  color: var(--c-muted);
+  font-size: 14px;
+  letter-spacing: 2px;
+  margin-bottom: 5px;
+  text-transform: uppercase;
+}
+
+.px-input {
+  display: block;
+  width: 100%;
+  padding: 10px 12px;
+  margin-bottom: 14px;
+  background-color: var(--c-input);
+  border: 2px solid var(--c-border);
+  color: var(--c-text);
+  font-size: 16px;
+  font-family: inherit;
+  outline: none;
+}
+
+.px-input:focus {
+  border-color: var(--c-red);
+}
+
+.px-input--no-mb { margin-bottom: 0; }
+
+select.px-input { cursor: pointer; }
+textarea.px-input { resize: vertical; }
+
+/* ── Buttons ─────────────────────────────────────────────────────────────────── */
+
+.px-btn {
+  display: inline-block;
+  padding: 10px 16px;
+  background-color: var(--c-red);
+  color: var(--c-white);
+  border: 2px solid var(--c-border);
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: bold;
+  letter-spacing: 1px;
+  cursor: pointer;
+  box-shadow: 4px 4px 0 #000;
+  transition: box-shadow 0.05s, transform 0.05s;
+  text-align: center;
+}
+
+.px-btn:active, .px-btn--pressed {
+  box-shadow: 2px 2px 0 #000;
+  transform: translate(2px, 2px);
+}
+
+.px-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.px-btn--full   { width: 100%; }
+.px-btn--sm     { font-size: 11px; padding: 6px 12px; }
+.px-btn--gold   { background-color: var(--c-gold); }
+.px-btn--blue   { background-color: var(--c-blue); }
+.px-btn--green  { background-color: var(--c-green); }
+.px-btn--ghost  {
+  background: none;
+  box-shadow: none;
+  color: var(--c-muted);
+  border-color: var(--c-input);
+}
+.px-btn--ghost:active { box-shadow: none; transform: none; }
+.px-btn--outline {
+  background: none;
+  color: var(--c-text);
+}
+
+/* ── Badges ──────────────────────────────────────────────────────────────────── */
+
+.px-badge {
+  display: inline-block;
+  padding: 2px 8px;
+  font-size: 11px;
+  font-weight: bold;
+  border: 1px solid var(--c-border);
+  background-color: var(--c-alt);
+  color: var(--c-text);
+}
+
+.px-badge--red    { background-color: var(--c-red);    color: var(--c-white); border-color: var(--c-red);    }
+.px-badge--gold   { background-color: var(--c-gold);   color: var(--c-white); border-color: var(--c-gold);   }
+.px-badge--blue   { background-color: var(--c-blue);   color: var(--c-white); border-color: var(--c-blue);   }
+.px-badge--green  { background-color: var(--c-green);  color: var(--c-white); border-color: var(--c-green);  }
+.px-badge--purple { background-color: var(--c-purple); color: var(--c-white); border-color: var(--c-purple); }
+
+/* ── Feedback messages ───────────────────────────────────────────────────────── */
+
+.px-error {
+  background-color: #fee2e2;
+  border: 2px solid var(--c-red);
+  color: var(--c-red);
+  padding: 10px 14px;
+  font-size: 13px;
+  margin-bottom: 16px;
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.px-success {
+  background-color: #dcfce7;
+  border: 2px solid var(--c-green);
+  color: var(--c-green);
+  padding: 10px 14px;
+  font-size: 13px;
+  margin-bottom: 16px;
+}
+
+/* ── Divider ─────────────────────────────────────────────────────────────────── */
+
+.px-divider {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 20px 0 16px;
+}
+
+.px-divider__line {
+  flex: 1;
+  border-top: 1px solid var(--c-input);
+  display: block;
+}
+
+.px-divider__text {
+  color: var(--c-muted);
+  font-size: 12px;
+}
+
+/* ── Logo block ──────────────────────────────────────────────────────────────── */
+
+.px-logo-block { text-align: center; margin-bottom: 20px; }
+
+.px-logo-text {
+  font-family: inherit;
+  font-size: 24px;
+  font-weight: bold;
+  color: var(--c-text);
+  letter-spacing: 4px;
+  margin: 8px 0 0;
+}
+
+.px-logo-scan {
+  height: 2px;
+  background-color: var(--c-border);
+  margin: 10px auto 0;
+  width: 40px;
+}
+
+.px-portal-sub {
+  text-align: center;
+  color: var(--c-muted);
+  font-size: 11px;
+  letter-spacing: 2px;
+  margin-bottom: 24px;
+  margin-top: 4px;
+}
+
+/* ── Auth link button ────────────────────────────────────────────────────────── */
+
+.px-link-btn {
+  width: 100%;
+  background: none;
+  border: none;
+  color: var(--c-muted);
+  font-size: 16px;
+  cursor: pointer;
+  text-align: center;
+  padding: 8px 0;
+  font-family: inherit;
+}
+
+.px-link-btn:hover { color: var(--c-text); }
+
+/* ── Table ───────────────────────────────────────────────────────────────────── */
+
+.px-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+.px-table th {
+  background-color: var(--c-input);
+  color: var(--c-muted);
+  font-size: 10px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  padding: 10px 12px;
+  text-align: left;
+  border: 1px solid var(--c-border);
+}
+
+.px-table td {
+  padding: 10px 12px;
+  border: 1px solid var(--c-input);
+  color: var(--c-text);
+  vertical-align: middle;
+}
+
+.px-table tr:nth-child(even) td { background-color: var(--c-alt); }
+
+/* ── Section title ───────────────────────────────────────────────────────────── */
+
+.px-section-title {
+  font-size: 11px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--c-muted);
+  border-bottom: 2px solid var(--c-border);
+  padding-bottom: 8px;
+  margin-bottom: 16px;
+}
+
+/* ── Tabs ────────────────────────────────────────────────────────────────────── */
+
+.px-tab-bar {
+  display: flex;
+  border-bottom: 2px solid var(--c-border);
+  margin-bottom: 24px;
+  gap: 0;
+  flex-wrap: wrap;
+}
+
+.px-tab {
+  padding: 10px 18px;
+  background: none;
+  border: none;
+  border-bottom: 3px solid transparent;
+  color: var(--c-muted);
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 12px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  margin-bottom: -2px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.px-tab:hover  { color: var(--c-text); }
+.px-tab--active {
+  color: var(--c-text);
+  font-weight: bold;
+  border-bottom-color: var(--c-red);
+}
+
+.px-tab__badge {
+  background-color: var(--c-alt);
+  color: var(--c-muted);
+  border: 1px solid var(--c-border);
+  font-size: 10px;
+  padding: 1px 6px;
+  font-weight: bold;
+}
