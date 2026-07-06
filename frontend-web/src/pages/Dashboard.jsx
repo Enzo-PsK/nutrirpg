@@ -3,7 +3,7 @@ import React, { useEffect, useState, useCallback } from 'react';
 import '../styles/components.css';
 import { PlatformAdminHome, PlatformAdminUsers } from './PlatformAdmin';
 
-const API = process.env.REACT_APP_API_URL || 'http://localhost:3000';
+const API = process.env.REACT_APP_API_URL || 'http://localhost:3000'; // set via .env.development / .env.production
 
 // ---- Colours — map CSS variables to JS for dynamic inline styles ------------
 // Static styles → use CSS classes from components.css

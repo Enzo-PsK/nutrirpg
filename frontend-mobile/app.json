@@ -16,7 +16,10 @@
       "supportsTablet": false
     },
     "extra": {
-      "apiUrl": "http://192.168.1.85:3000"
+      "apiUrl": "https://nutrirpg-be-production.up.railway.app",
+      "eas": {
+        "projectId": "f16c0076-9cda-4665-bb08-73a3700bb1ab"
+      }
     },
     "plugins": [
       "expo-font",

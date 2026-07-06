@@ -2,6 +2,8 @@
 import React, { useState } from 'react';
 import '../styles/components.css';
 
+const API = process.env.REACT_APP_API_URL || 'http://localhost:3000'; // set via .env.development / .env.production
+
 const PixelBtn = ({ children, className = '', style, ...props }) => {
   const [pressed, setPressed] = useState(false);
   return (
@@ -37,7 +39,7 @@ const Register = ({ onRegistered, onBackToLogin }) => {
 
     setLoading(true);
     try {
-      const res = await fetch('/api/auth/register-nutritionist', {
+      const res = await fetch(`${API}/api/auth/register-nutritionist`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({

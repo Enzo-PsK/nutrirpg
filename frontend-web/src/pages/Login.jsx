@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import '../styles/components.css';
 
+const API = process.env.REACT_APP_API_URL || 'http://localhost:3000'; // set via .env.development / .env.production
 const LAST_USER_KEY = 'nutrirpg_last_user';
 
 const Login = ({ onLogin, onRegister }) => {
@@ -15,7 +16,7 @@ const Login = ({ onLogin, onRegister }) => {
     setLoading(true);
     setError('');
     try {
-      const res = await fetch('/api/auth/login', {
+      const res = await fetch(`${API}/api/auth/login`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email, password }),

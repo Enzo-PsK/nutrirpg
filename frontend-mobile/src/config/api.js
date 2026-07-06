@@ -1,23 +1,17 @@
 /**
  * Centralized API configuration.
  *
- * HOW TO CHANGE THE BACKEND URL:
- *   Edit app.json → "extra" → "apiUrl"
- *   Set it to your machine's local IP:  http://<YOUR_IP>:3000
- *   (run `ipconfig` on Windows to find your IP)
+ * - Development (__DEV__): http://localhost:3000
+ *   For physical device testing, update DEV_URL to your machine's local IP.
  *
- * Current machine IP: 192.168.1.85
- * - Web browser (same machine): http://localhost:3000  ✓
- * - Android/iOS via Expo Go:    http://192.168.1.85:3000  ✓
- * - Android Emulator:           http://10.0.2.2:3000  ✓
+ * - Production: reads app.json → "extra" → "apiUrl"
+ *   Currently: https://nutrirpg-be-production.up.railway.app
  */
-import { Platform } from 'react-native';
 import Constants from 'expo-constants';
 
-const configured = Constants.expoConfig?.extra?.apiUrl;
+const PROD_URL = Constants.expoConfig?.extra?.apiUrl || 'https://nutrirpg-be-production.up.railway.app';
+const DEV_URL  = 'http://localhost:3000';
 
-export const API_URL = Platform.OS === 'web'
-  ? 'http://localhost:3000'
-  : (configured || 'http://192.168.1.85:3000');
+export const API_URL = __DEV__ ? DEV_URL : PROD_URL;
 
 export default API_URL;

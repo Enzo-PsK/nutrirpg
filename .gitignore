@@ -50,3 +50,5 @@ Thumbs.db
 
 # Expo
 .expo/
+frontend-web/.env.development
+frontend-web/.env.production
