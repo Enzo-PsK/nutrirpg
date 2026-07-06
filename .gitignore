@@ -27,6 +27,23 @@ npm-debug.log*
 *.swp
 *.swo
 
+# Android — build cache & generated outputs
+.gradle/
+**/.gradle/
+frontend-mobile/android/
+
+# Android — local machine config (SDK path, etc.)
+local.properties
+
+# Android — IDE project files
+*.iml
+*.hprof
+.cxx/
+
+# Android — signing (keep only release keystores intentionally committed)
+*.keystore
+!*.release.keystore
+
 # OS
 .DS_Store
 Thumbs.db

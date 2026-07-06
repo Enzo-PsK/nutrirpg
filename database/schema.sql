@@ -3,7 +3,7 @@
 
 CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
 
-CREATE TABLE users (
+CREATE TABLE IF NOT EXISTS users (
   id            UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
   username      VARCHAR(50) NOT NULL UNIQUE,
   first_name    VARCHAR(80),
@@ -20,20 +20,20 @@ CREATE TABLE users (
   updated_at    TIMESTAMP DEFAULT NOW()
 );
 
-CREATE TABLE hydration_logs (
+CREATE TABLE IF NOT EXISTS hydration_logs (
   id         UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
   user_id    UUID NOT NULL REFERENCES users(id) ON DELETE CASCADE,
   amount_ml  INTEGER NOT NULL CHECK (amount_ml > 0),
   logged_at  TIMESTAMP DEFAULT NOW()
 );
 
-CREATE TABLE product_categories (
+CREATE TABLE IF NOT EXISTS product_categories (
   id         UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
   name       VARCHAR(80) NOT NULL UNIQUE,
   created_at TIMESTAMP DEFAULT NOW()
 );
 
-CREATE TABLE products (
+CREATE TABLE IF NOT EXISTS products (
   id                  UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
   name                VARCHAR(100) NOT NULL UNIQUE,
   description         TEXT,
@@ -43,7 +43,7 @@ CREATE TABLE products (
   created_at          TIMESTAMP DEFAULT NOW()
 );
 
-CREATE TABLE pantry_items (
+CREATE TABLE IF NOT EXISTS pantry_items (
   id                  UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
   user_id             UUID NOT NULL REFERENCES users(id) ON DELETE CASCADE,
   product_id          UUID REFERENCES products(id),
@@ -56,7 +56,7 @@ CREATE TABLE pantry_items (
   updated_at          TIMESTAMP DEFAULT NOW()
 );
 
-CREATE TABLE xp_logs (
+CREATE TABLE IF NOT EXISTS xp_logs (
   id          UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
   user_id     UUID NOT NULL REFERENCES users(id) ON DELETE CASCADE,
   action      VARCHAR(100) NOT NULL,
@@ -65,7 +65,7 @@ CREATE TABLE xp_logs (
   logged_at   TIMESTAMP DEFAULT NOW()
 );
 
-CREATE TABLE nutritionist_patients (
+CREATE TABLE IF NOT EXISTS nutritionist_patients (
   id               UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
   nutritionist_id  UUID NOT NULL REFERENCES users(id) ON DELETE CASCADE,
   patient_id       UUID NOT NULL REFERENCES users(id) ON DELETE CASCADE,
@@ -73,7 +73,7 @@ CREATE TABLE nutritionist_patients (
   UNIQUE(patient_id)
 );
 
-CREATE TABLE recipes (
+CREATE TABLE IF NOT EXISTS recipes (
   id               UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
   nutritionist_id  UUID NOT NULL REFERENCES users(id) ON DELETE CASCADE,
   patient_id       UUID REFERENCES users(id) ON DELETE CASCADE,
@@ -85,7 +85,7 @@ CREATE TABLE recipes (
   updated_at       TIMESTAMP DEFAULT NOW()
 );
 
-CREATE TABLE recipe_ingredients (
+CREATE TABLE IF NOT EXISTS recipe_ingredients (
   id          UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
   recipe_id   UUID NOT NULL REFERENCES recipes(id) ON DELETE CASCADE,
   product_id  UUID NOT NULL REFERENCES products(id) ON DELETE RESTRICT,
@@ -93,7 +93,7 @@ CREATE TABLE recipe_ingredients (
   unit        VARCHAR(10) NOT NULL
 );
 
-CREATE TABLE recipe_assignments (
+CREATE TABLE IF NOT EXISTS recipe_assignments (
   id          UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
   recipe_id   UUID NOT NULL REFERENCES recipes(id) ON DELETE CASCADE,
   patient_id  UUID NOT NULL REFERENCES users(id) ON DELETE CASCADE,
@@ -102,7 +102,7 @@ CREATE TABLE recipe_assignments (
   UNIQUE(recipe_id, patient_id)
 );
 
-CREATE TABLE meals (
+CREATE TABLE IF NOT EXISTS meals (
   id              UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
   patient_id      UUID NOT NULL REFERENCES users(id) ON DELETE CASCADE,
   nutritionist_id UUID NOT NULL REFERENCES users(id) ON DELETE CASCADE,
@@ -112,7 +112,7 @@ CREATE TABLE meals (
   created_at      TIMESTAMP DEFAULT NOW()
 );
 
-CREATE TABLE meal_items (
+CREATE TABLE IF NOT EXISTS meal_items (
   id          UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
   meal_id     UUID NOT NULL REFERENCES meals(id) ON DELETE CASCADE,
   description VARCHAR(255) NOT NULL,
@@ -120,24 +120,24 @@ CREATE TABLE meal_items (
   created_at  TIMESTAMP DEFAULT NOW()
 );
 
-CREATE TABLE weight_logs (
+CREATE TABLE IF NOT EXISTS weight_logs (
   id         UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
   user_id    UUID NOT NULL REFERENCES users(id) ON DELETE CASCADE,
   weight_kg  FLOAT NOT NULL,
   logged_at  TIMESTAMP DEFAULT NOW()
 );
 
-CREATE TABLE recipe_completions (
+CREATE TABLE IF NOT EXISTS recipe_completions (
   id           UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
   user_id      UUID NOT NULL REFERENCES users(id) ON DELETE CASCADE,
   recipe_id    UUID NOT NULL REFERENCES recipes(id) ON DELETE CASCADE,
   completed_at TIMESTAMP DEFAULT NOW()
 );
 
-CREATE INDEX idx_hydration_user_date ON hydration_logs(user_id, logged_at);
-CREATE INDEX idx_pantry_user ON pantry_items(user_id);
-CREATE INDEX idx_xp_user ON xp_logs(user_id, logged_at);
-CREATE INDEX idx_nutri_patients ON nutritionist_patients(nutritionist_id);
-CREATE INDEX idx_recipes_patient ON recipes(patient_id);
-CREATE INDEX idx_recipes_nutri ON recipes(nutritionist_id);
-CREATE INDEX idx_recipe_ingredients ON recipe_ingredients(recipe_id);
+CREATE INDEX IF NOT EXISTS idx_hydration_user_date ON hydration_logs(user_id, logged_at);
+CREATE INDEX IF NOT EXISTS idx_pantry_user ON pantry_items(user_id);
+CREATE INDEX IF NOT EXISTS idx_xp_user ON xp_logs(user_id, logged_at);
+CREATE INDEX IF NOT EXISTS idx_nutri_patients ON nutritionist_patients(nutritionist_id);
+CREATE INDEX IF NOT EXISTS idx_recipes_patient ON recipes(patient_id);
+CREATE INDEX IF NOT EXISTS idx_recipes_nutri ON recipes(nutritionist_id);
+CREATE INDEX IF NOT EXISTS idx_recipe_ingredients ON recipe_ingredients(recipe_id);

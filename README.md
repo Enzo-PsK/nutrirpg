@@ -53,6 +53,13 @@ npm install
 npx expo start               # Abre o Expo Go
 ```
 
+#### 3.1 Gerar apk (Android)
+```bash
+npx expo prebuild --platform android
+cd android
+.\gradlew assembleDebug
+```
+
 ### 4. Frontend Web (Admin)
 
 ```bash

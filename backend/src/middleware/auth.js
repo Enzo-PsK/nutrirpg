@@ -10,7 +10,7 @@ const authenticateToken = (req, res, next) => {
     return res.status(401).json({ error: 'Token de acesso necessário' });
   }
 
-  jwt.verify(token, process.env.JWT_SECRET || 'nutrirpg_secret', async (err, decoded) => {
+  jwt.verify(token, process.env.JWT_SECRET, async (err, decoded) => {
     if (err) {
       return res.status(403).json({ error: 'Token inválido ou expirado' });
     }
