@@ -88,6 +88,22 @@ const Login = ({ onLogin, onRegister }) => {
         <button className="px-link-btn" onClick={onRegister}>
           Criar conta de Nutricionista →
         </button>
+
+        <div className="px-divider">
+          <span className="px-divider__line" />
+          <span className="px-divider__text">app</span>
+          <span className="px-divider__line" />
+        </div>
+
+        <a
+          href="https://drive.google.com/file/d/1__vNCGbqPa55mBKkmcpIHL5oQg0HtsRL/view?usp=sharing"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="px-link-btn"
+          style={{ display: 'block', textAlign: 'center', textDecoration: 'none' }}
+        >
+          ⬇ Baixar App Android (.apk)
+        </a>
       </div>
     </div>
   );
